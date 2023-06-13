@@ -45,7 +45,9 @@ class XML
 
     private static function parse($xml)
     {
-        libxml_disable_entity_loader(true);
+        if (\PHP_VERSION_ID < 80000) {
+            libxml_disable_entity_loader(true);
+        }
 
         return json_decode(
             json_encode(
